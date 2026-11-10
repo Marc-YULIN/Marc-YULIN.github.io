@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marc Yeh｜C# / .NET 軟體開發作品集</title>
+<meta name="description" content="系統做不到、只能靠人力硬撐的工作，交給我。C# / .NET 軟體工程師：報表自動化、客製化管理系統、API／金流串接、LINE 機器人、AI 串接、網頁資料擷取。">
+<meta property="og:title" content="Marc Yeh｜C# / .NET 軟體開發作品集">
+<meta property="og:description" content="報表自動化、管理系統、金流串接、LINE 機器人、AI 串接、網頁資料擷取的實際作品。">
+<meta property="og:image" content="https://marc-yulin.github.io/images/order-admin.png">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f7f8fa; --surface: #ffffff; --text: #1f2937; --muted: #6b7280; --line: #e5e7eb;
+    --accent: #2f5597; --accent-soft: #e8eef9; --chip: #f1f5f9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141b; --surface: #171e27; --text: #e5e7eb; --muted: #9aa4b2; --line: #273140;
+      --accent: #7aa2e3; --accent-soft: #1d2a3d; --chip: #1f2833;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.7; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  header.hero { padding: 72px 0 48px; }
+  .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .04em; margin-bottom: 10px; }
+  .hero h1 { font-size: clamp(26px, 5vw, 46px); word-break: break-word; line-height: 1.3; margin-bottom: 16px; }
+  .hero p { font-size: 18px; color: var(--muted); max-width: 720px; }
+  .hero .actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.ghost { border: 1px solid var(--line); color: var(--text); background: var(--surface); }
+  section { padding: 40px 0; }
+  h2 { font-size: 26px; margin-bottom: 8px; }
+  .lead { color: var(--muted); margin-bottom: 24px; }
+  .grid { display: grid; gap: 16px; }
+  .problems { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+  .problem { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  .problem .pain { color: var(--muted); font-size: 15px; }
+  .problem .fix { font-weight: 700; margin-top: 6px; }
+  .problem .fix::before { content: "→ "; color: var(--accent); }
+  .works { grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); }
+  .work { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .work .shot { aspect-ratio: 16 / 10; background: var(--chip); border-bottom: 1px solid var(--line); overflow: hidden; }
+  .work .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .work .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .work h3 { font-size: 19px; }
+  .work p { color: var(--muted); font-size: 15px; }
+  .work ul { padding-left: 18px; font-size: 15px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+  .tags span { background: var(--chip); border-radius: 999px; padding: 2px 10px; font-size: 13px; color: var(--muted); }
+  .work .link { font-weight: 700; text-decoration: none; margin-top: 6px; }
+  .steps { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); counter-reset: step; }
+  .step { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; counter-increment: step; }
+  .step::before { content: counter(step); display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+  .step h3 { font-size: 17px; }
+  .step p { color: var(--muted); font-size: 15px; }
+  .notice { background: var(--accent-soft); border-radius: 12px; padding: 16px 20px; font-size: 15px; }
+  @media (max-width: 600px) { .hero h1 br { display: none; } header.hero { padding: 48px 0 32px; } }
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); margin-top: 24px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Marc Yeh｜C# / .NET 軟體工程師</div>
+    <h1>系統做不到、只能靠人力硬撐的工作，<br>交給我。</h1>
+    <p>長期開發後台管理、金流、報表與企業內部系統，擅長把雜亂的流程變成穩定好用的工具。下面每一件作品都附完整原始碼和實際執行畫面。</p>
+    <div class="actions">
+      <a class="btn primary" href="#works">看作品</a>
+      <a class="btn ghost" href="https://github.com/Marc-YULIN">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2>你遇到的問題，我這樣解決</h2>
+    <p class="lead">先了解你現在怎麼做，再決定要自動化哪一段，不做用不到的功能。</p>
+    <div class="grid problems">
+      <div class="problem"><div class="pain">每天花好幾個小時複製貼上、整理 Excel</div><div class="fix">報表自動化，一鍵產出</div></div>
+      <div class="problem"><div class="pain">會員、訂單、庫存靠 Excel 管，套裝軟體又不合用</div><div class="fix">客製化管理系統</div></div>
+      <div class="problem"><div class="pain">要串金流、物流或其他系統，資料還在手動對</div><div class="fix">API 串接，資料自動同步</div></div>
+      <div class="problem"><div class="pain">客人在 LINE 一直問同樣的問題</div><div class="fix">LINE 機器人 24 小時自動回覆</div></div>
+      <div class="problem"><div class="pain">想導入 AI 卻不知道從哪裡開始</div><div class="fix">串接 AI，整理文件、回答客服問題</div></div>
+      <div class="problem"><div class="pain">資料散在各個網站，要一筆一筆抓</div><div class="fix">客製爬蟲，自動整理成 Excel</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <h2>作品</h2>
+    <p class="lead">都是可以實際執行的示範專案，資料為虛構，程式碼公開在 GitHub。</p>
+    <div class="grid works">
+      <article class="work">
+        <div class="shot"><img src="images/order-admin.png" alt="訂單後台儀表板" loading="lazy"></div>
+        <div class="body">
+          <h3>訂單後台＋綠界金流</h3>
+          <p>小型電商的會員、商品庫存、訂單管理，串接綠界付款並驗證付款通知後自動更新訂單。</p>
+          <ul>
+            <li>管理員／店員權限，伺服器端把關</li>
+            <li>CheckMacValue 驗證、重複通知只處理一次</li>
+            <li>28 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>EF Core</span><span>綠界金流</span><span>Excel 匯出</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/order-admin-demo">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/ai-assistant.png" alt="AI 文件整理結果 Excel" loading="lazy"></div>
+        <div class="body">
+          <h3>AI 文件整理＋知識庫問答</h3>
+          <p>客訴信、請款單、會議紀錄自動分類、摘要、列待辦並判斷急迫度；問答只根據公司資料回答並附來源。</p>
+          <ul>
+            <li>串接 Claude，結構化輸出</li>
+            <li>資料裡沒有就說沒有，不亂編</li>
+          </ul>
+          <div class="tags"><span>C# / .NET</span><span>Claude API</span><span>ClosedXML</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/ai-assistant-demo">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/excel.png" alt="Excel 彙總報表" loading="lazy"></div>
+        <div class="body">
+          <h3>Excel 報表自動化</h3>
+          <p>3 份格式不一的分店月報，一鍵合併成總覽、品項排行、明細與異常資料，0.5 秒完成。</p>
+          <ul>
+            <li>自動找標題列、清理空白與文字數字</li>
+            <li>無法判斷的資料另外列出，不默默算錯</li>
+          </ul>
+          <div class="tags"><span>C# / .NET</span><span>ClosedXML</span><span>Bogus</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/excel-automation-demo">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/linebot.png" alt="LINE 機器人對話示意" loading="lazy"></div>
+        <div class="body">
+          <h3>LINE 官方帳號機器人</h3>
+          <p>咖啡店常見問題自動回覆，客人用自己的話問也找得到答案，附快速回覆按鈕。</p>
+          <ul>
+            <li>驗證 LINE 簽章、改 FAQ 檔即生效</li>
+            <li>可延伸 AI 客服、預約查詢</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>LINE Messaging API</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/linebot-demo">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/scraper.png" alt="爬蟲輸出的 Excel" loading="lazy"></div>
+        <div class="body">
+          <h3>網頁資料擷取</h3>
+          <p>自動翻頁、逐筆抓詳細頁，把公開資料整理成格式化的 Excel。</p>
+          <ul>
+            <li>每次請求間隔 1 秒、失敗自動重試</li>
+            <li>只抓允許擷取的公開資料</li>
+          </ul>
+          <div class="tags"><span>C# / .NET</span><span>AngleSharp</span><span>ClosedXML</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/scraper-demo">查看原始碼 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>合作方式</h2>
+    <p class="lead">全程遠端，先小範圍做出可用的版本，再慢慢加功能。</p>
+    <div class="grid steps">
+      <div class="step"><h3>說明需求</h3><p>提供範例（網址、Excel、目前的作法），個資請先去識別化。</p></div>
+      <div class="step"><h3>回覆做法與報價</h3><p>說明可行性、做法、時程與費用，超出範圍會先說清楚。</p></div>
+      <div class="step"><h3>先交樣本</h3><p>先做一小部分給你確認方向，對了再完成全部。</p></div>
+      <div class="step"><h3>交付與保固</h3><p>交付程式與圖文說明，交付後提供免費修正期。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="notice">不承接：登入繞過、破解驗證碼、蒐集個人資料，或網站條款禁止擷取的需求。</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Marc Yeh｜作品原始碼：<a href="https://github.com/Marc-YULIN">github.com/Marc-YULIN</a>
+  </div>
+</footer>
+</body>
+</html>
