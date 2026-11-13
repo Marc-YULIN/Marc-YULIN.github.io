@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marc Yeh｜C# / .NET 軟體開發作品集</title>
-<meta name="description" content="系統做不到、只能靠人力硬撐的工作，交給我。C# / .NET 軟體工程師：報表自動化、客製化管理系統、API／金流串接、LINE 機器人、AI 串接、網頁資料擷取。">
+<meta name="description" content="系統做不到、只能靠人力硬撐的工作，交給我。C# / .NET 軟體工程師：報表自動化、客製化管理系統、API／金流串接、LINE 機器人、AI 串接、網頁資料擷取，以及金流、會員、風控與 AI 客服等後端系統作品。">
 <meta property="og:title" content="Marc Yeh｜C# / .NET 軟體開發作品集">
-<meta property="og:description" content="報表自動化、管理系統、金流串接、LINE 機器人、AI 串接、網頁資料擷取的實際作品。">
+<meta property="og:description" content="報表自動化、管理系統、金流串接、LINE 機器人、AI 串接、網頁資料擷取，以及金流模擬器、會員忠誠度引擎、風險告警等後端系統作品。">
 <meta property="og:image" content="https://marc-yulin.github.io/images/order-admin.png">
 <meta property="og:type" content="website">
 <style>
@@ -70,6 +70,7 @@
     <p>長期開發後台管理、金流、報表與企業內部系統，擅長把雜亂的流程變成穩定好用的工具。下面每一件作品都附完整原始碼和實際執行畫面。</p>
     <div class="actions">
       <a class="btn primary" href="#works">看作品</a>
+      <a class="btn ghost" href="#systems">後端系統作品</a>
       <a class="btn ghost" href="https://github.com/Marc-YULIN">GitHub</a>
     </div>
   </div>
@@ -160,6 +161,99 @@
           </ul>
           <div class="tags"><span>C# / .NET</span><span>AngleSharp</span><span>ClosedXML</span></div>
           <a class="link" href="https://github.com/Marc-YULIN/scraper-demo">查看原始碼 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="systems">
+  <div class="wrap">
+    <h2>後端系統作品</h2>
+    <p class="lead">把多年金流、會員、風控與客服系統的實務經驗，重新實作成可公開的專案：資料為虛構，全部附自動化測試、GitHub Actions CI 與中英文說明。</p>
+    <div class="grid works">
+      <article class="work">
+        <div class="shot"><img src="images/systems-transfer.png" alt="範例網銀轉帳完成畫面，驗證結果為相符" loading="lazy"></div>
+        <div class="body">
+          <h3>轉帳證明自動驗證</h3>
+          <p>上傳網銀轉帳截圖或錄影，自動擷取金額、帳號、姓名並與訂單比對，不符時自動開爭議單。</p>
+          <ul>
+            <li>一次性連結原子核銷，結果以 JWS 簽章通知商戶</li>
+            <li>FFmpeg 抽幀、剔除載入畫面，OCR／Gemini 擷取可抽換</li>
+            <li>52 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>Redis</span><span>FFmpeg</span><span>OCR</span><span>JWS</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/transfer-proof-verifier">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/systems-payment.png" alt="金流回呼紀錄：壞簽章被拒後重送成功" loading="lazy"></div>
+        <div class="body">
+          <h3>第三方金流模擬器</h3>
+          <p>模擬代收、代付與非同步回呼，可注入延遲、重複、亂序、壞簽章，讓金流串接在上線前就被測透。</p>
+          <ul>
+            <li>MD5／HMAC／RSA 簽章，timestamp＋nonce 防重放</li>
+            <li>Outbox＋指數退避重送，附商戶端冪等處理範例</li>
+            <li>141 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>Razor Pages</span><span>簽章驗證</span><span>Outbox</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/payment-gateway-simulator">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/systems-loyalty.png" alt="會員忠誠度引擎 API 文件" loading="lazy"></div>
+        <div class="body">
+          <h3>會員忠誠度引擎</h3>
+          <p>會員等級、即時回饋金、排行榜活動與優惠券，重點在帳務一致性與高併發下的正確性。</p>
+          <ul>
+            <li>帳本＋樂觀鎖＋冪等鍵，並行領取也不會超額</li>
+            <li>Redis 排行榜，故障時自動退回資料庫</li>
+            <li>73 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>EF Core</span><span>Redis</span><span>冪等設計</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/loyalty-engine">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/systems-allowlist.png" alt="IP 白名單管理後台" loading="lazy"></div>
+        <div class="body">
+          <h3>IP 白名單管理＋Cloudflare 同步</h3>
+          <p>管理各環境的允許與封鎖 IP，透過 outbox 可靠同步到 Cloudflare Lists，並定期比對本地與遠端的漂移。</p>
+          <ul>
+            <li>遠端結果不明時先比對確認，不盲目重送</li>
+            <li>管理員 JWT、系統整合用有權限範圍的 API Key</li>
+            <li>後端 85＋前端 35 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>Vue 3</span><span>TypeScript</span><span>PostgreSQL</span><span>Cloudflare</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/ip-allowlist-manager">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/systems-risk.png" alt="交易風險即時告警看板" loading="lazy"></div>
+        <div class="body">
+          <h3>交易風險即時告警</h3>
+          <p>規則引擎偵測單筆大額、短時間高頻、多帳號共用收款帳戶等異常，即時推到看板並發送 Telegram 通知。</p>
+          <ul>
+            <li>告警去重合併，依幣別與嚴重度過濾通知</li>
+            <li>SignalR 即時看板，中英韓三語訊息</li>
+            <li>49 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>SignalR</span><span>Telegram Bot</span><span>規則引擎</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/risk-alert-notifier">查看原始碼 →</a>
+        </div>
+      </article>
+      <article class="work">
+        <div class="shot"><img src="images/systems-faq.png" alt="四語 FAQ 客服聊天元件" loading="lazy"></div>
+        <div class="body">
+          <h3>四語 FAQ 智能客服</h3>
+          <p>繁中、英、韓、越四語客服：先用本地檢索回答，信心不足才交給 LLM，而且只能依 FAQ 作答，答不出來就轉真人。</p>
+          <ul>
+            <li>自建 BM25＋CJK n-gram＋同義詞檢索</li>
+            <li>88 題四語題庫自動評估命中率</li>
+            <li>71 個自動化測試</li>
+          </ul>
+          <div class="tags"><span>ASP.NET Core</span><span>BM25</span><span>Gemini</span><span>RAG</span></div>
+          <a class="link" href="https://github.com/Marc-YULIN/multilingual-faq-bot">查看原始碼 →</a>
         </div>
       </article>
     </div>
