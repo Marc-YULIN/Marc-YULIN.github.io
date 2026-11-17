@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marc Yeh｜C# / .NET 軟體開發作品集</title>
-<meta name="description" content="系統做不到、只能靠人力硬撐的工作，交給我。C# / .NET 軟體工程師：報表自動化、客製化管理系統、API／金流串接、LINE 機器人、AI 串接、網頁資料擷取，以及金流、會員、風控與 AI 客服等後端系統作品。">
+<meta name="description" content="系統做不到、只能靠人力硬撐的工作，交給我。C# / .NET 軟體工程師：報表自動化、客製化管理系統、API 串接、LINE 機器人、AI 串接、網頁資料擷取，以及第三方整合、會員、風控與 AI 客服等後端系統作品。">
 <meta property="og:title" content="Marc Yeh｜C# / .NET 軟體開發作品集">
-<meta property="og:description" content="報表自動化、管理系統、金流串接、LINE 機器人、AI 串接、網頁資料擷取，以及金流模擬器、會員忠誠度引擎、風險告警等後端系統作品。">
+<meta property="og:description" content="報表自動化、管理系統、API 串接、LINE 機器人、AI 串接、網頁資料擷取，以及 API 回呼模擬器、會員忠誠度引擎、風險告警等後端系統作品。">
 <meta property="og:image" content="https://marc-yulin.github.io/images/order-admin.png">
 <meta property="og:type" content="website">
 <style>
@@ -67,7 +67,7 @@
   <div class="wrap">
     <div class="eyebrow">Marc Yeh｜C# / .NET 軟體工程師</div>
     <h1>系統做不到、只能靠人力硬撐的工作，<br>交給我。</h1>
-    <p>長期開發後台管理、金流、報表與企業內部系統，擅長把雜亂的流程變成穩定好用的工具。下面每一件作品都附完整原始碼和實際執行畫面。</p>
+    <p>長期開發後台管理、第三方 API 整合、報表與企業內部系統，擅長把雜亂的流程變成穩定好用的工具。下面每一件作品都附完整原始碼和實際執行畫面。</p>
     <div class="actions">
       <a class="btn primary" href="#works">看作品</a>
       <a class="btn ghost" href="#systems">後端系統作品</a>
@@ -84,7 +84,7 @@
     <div class="grid problems">
       <div class="problem"><div class="pain">每天花好幾個小時複製貼上、整理 Excel</div><div class="fix">報表自動化，一鍵產出</div></div>
       <div class="problem"><div class="pain">會員、訂單、庫存靠 Excel 管，套裝軟體又不合用</div><div class="fix">客製化管理系統</div></div>
-      <div class="problem"><div class="pain">要串金流、物流或其他系統，資料還在手動對</div><div class="fix">API 串接，資料自動同步</div></div>
+      <div class="problem"><div class="pain">要串線上付款、物流或其他系統，資料還在手動對</div><div class="fix">API 串接，資料自動同步</div></div>
       <div class="problem"><div class="pain">客人在 LINE 一直問同樣的問題</div><div class="fix">LINE 機器人 24 小時自動回覆</div></div>
       <div class="problem"><div class="pain">想導入 AI 卻不知道從哪裡開始</div><div class="fix">串接 AI，整理文件、回答客服問題</div></div>
       <div class="problem"><div class="pain">資料散在各個網站，要一筆一筆抓</div><div class="fix">客製爬蟲，自動整理成 Excel</div></div>
@@ -100,14 +100,14 @@
       <article class="work">
         <div class="shot"><img src="images/order-admin.png" alt="訂單後台儀表板" loading="lazy"></div>
         <div class="body">
-          <h3>訂單後台＋綠界金流</h3>
+          <h3>訂單後台＋綠界付款串接</h3>
           <p>小型電商的會員、商品庫存、訂單管理，串接綠界付款並驗證付款通知後自動更新訂單。</p>
           <ul>
             <li>管理員／店員權限，伺服器端把關</li>
             <li>CheckMacValue 驗證、重複通知只處理一次</li>
             <li>28 個自動化測試</li>
           </ul>
-          <div class="tags"><span>ASP.NET Core</span><span>EF Core</span><span>綠界金流</span><span>Excel 匯出</span></div>
+          <div class="tags"><span>ASP.NET Core</span><span>EF Core</span><span>綠界 ECPay</span><span>Excel 匯出</span></div>
           <a class="link" href="https://github.com/Marc-YULIN/order-admin-demo">查看原始碼 →</a>
         </div>
       </article>
@@ -170,7 +170,7 @@
 <section id="systems">
   <div class="wrap">
     <h2>後端系統作品</h2>
-    <p class="lead">把多年金流、會員、風控與客服系統的實務經驗，重新實作成可公開的專案：資料為虛構，全部附自動化測試、GitHub Actions CI 與中英文說明。</p>
+    <p class="lead">把多年第三方整合、會員、風控與客服系統的實務經驗，重新實作成可公開的專案：資料為虛構，全部附自動化測試、GitHub Actions CI 與中英文說明。</p>
     <div class="grid works">
       <article class="work">
         <div class="shot"><img src="images/systems-transfer.png" alt="範例網銀轉帳完成畫面，驗證結果為相符" loading="lazy"></div>
@@ -187,13 +187,13 @@
         </div>
       </article>
       <article class="work">
-        <div class="shot"><img src="images/systems-payment.png" alt="金流回呼紀錄：壞簽章被拒後重送成功" loading="lazy"></div>
+        <div class="shot"><img src="images/systems-payment.png" alt="回呼紀錄：壞簽章被拒後重送成功" loading="lazy"></div>
         <div class="body">
-          <h3>第三方金流模擬器</h3>
-          <p>模擬代收、代付與非同步回呼，可注入延遲、重複、亂序、壞簽章，讓金流串接在上線前就被測透。</p>
+          <h3>第三方 API 回呼模擬器</h3>
+          <p>模擬第三方服務的下單與非同步回呼，可注入延遲、重複、亂序、壞簽章，讓 API 串接在上線前就被測透。</p>
           <ul>
             <li>MD5／HMAC／RSA 簽章，timestamp＋nonce 防重放</li>
-            <li>Outbox＋指數退避重送，附商戶端冪等處理範例</li>
+            <li>Outbox＋指數退避重送，附接收端冪等處理範例</li>
             <li>141 個自動化測試</li>
           </ul>
           <div class="tags"><span>ASP.NET Core</span><span>Razor Pages</span><span>簽章驗證</span><span>Outbox</span></div>
@@ -232,7 +232,7 @@
         <div class="shot"><img src="images/systems-risk.png" alt="交易風險即時告警看板" loading="lazy"></div>
         <div class="body">
           <h3>交易風險即時告警</h3>
-          <p>規則引擎偵測單筆大額、短時間高頻、多帳號共用收款帳戶等異常，即時推到看板並發送 Telegram 通知。</p>
+          <p>規則引擎偵測單筆大額、短時間高頻、多帳號共用外部帳戶等異常，即時推到看板並發送 Telegram 通知。</p>
           <ul>
             <li>告警去重合併，依幣別與嚴重度過濾通知</li>
             <li>SignalR 即時看板，中英韓三語訊息</li>
